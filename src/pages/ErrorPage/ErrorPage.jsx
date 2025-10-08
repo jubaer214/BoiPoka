@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router";
 
 const Error = () => {
   return (
     <>
-      <section className="relative z-10 bg-primary py-[120px]">
+      <section className="relative z-10 bg-red-400 py-[120px]">
         <div className="container mx-auto">
           <div className="-mx-4 flex">
             <div className="w-full px-4">
@@ -17,12 +18,12 @@ const Error = () => {
                 <p className="mb-8 text-lg text-white">
                   The page you are looking for it maybe deleted
                 </p>
-                <a
+                <Link to="/"><a
                   href="javascript:void(0)"
                   className="inline-block rounded-lg border border-white px-8 py-3 text-center text-base font-semibold text-white transition hover:bg-white hover:text-primary"
                 >
                   Go To Home
-                </a>
+                </a></Link>
               </div>
             </div>
           </div>
