@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const NavBar = () => {
     const links = <>
         <Link to="/"><li className='mr-3 hover:border-1 border-green-500 px-4 py-2 rounded-lg text-gray-400'>Home</li></Link>
-        <Link to="/"><li className='mr-3 hover:border-1 border-green-500 px-4 py-2 rounded-lg text-gray-400'>Listed Books</li></Link>
+        <Link to="/readList"><li className='mr-3 hover:border-1 border-green-500 px-4 py-2 rounded-lg text-gray-400'>Listed Books</li></Link>
         <Link to="/"><li className='mr-3 hover:border-1 border-green-500 px-4 py-2 rounded-lg text-gray-400'>Pages to Read</li></Link>
     </>
     return (
