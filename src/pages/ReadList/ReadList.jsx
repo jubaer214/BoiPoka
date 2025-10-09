@@ -8,6 +8,7 @@ import Book from '../Book/Book';
 const ReadList = () => {
 
     const [readList, setReadList] = useState([]);
+    const [sort, setSort] = useState([]);
     const data = useLoaderData();
 
     useEffect(() => {
@@ -15,9 +16,21 @@ const ReadList = () => {
         const convertedData = storedBookData.map(id => parseInt(id));
         const myReadList = data.filter(book => convertedData.includes(book.bookId));
         setReadList(myReadList);
-    })
+    }, [])
 
-    const [sort, setSort] = useState([])
+    
+    const handleSort = (type) => {
+        setSort(type);
+        if (type === "pages") {
+            const sortedByPage = [...readList.sort((a, b) => a.totalPages - b.totalPages)];
+            setReadList(sortedByPage)
+            
+        }
+        if (type === "ratings") {
+            const sortedByRatings = [...readList.sort((a, b) => a.rating - b.rating)];
+            setReadList(sortedByRatings)
+        }
+    }
 
 
     return (
@@ -25,10 +38,10 @@ const ReadList = () => {
             <h1 className='bg-gray-100 rounded-lg text-center p-2 text-2xl font-bold mb-8'>Books</h1>
             <div className='flex justify-center items-center mb-5'>
                 <div className="dropdown dropdown-center">
-                    <div tabIndex={0} role="button" className="btn m-1 bg-blue-400 font-bold text-white">Sort By ⬇️</div>
+                    <div tabIndex={0} role="button" className="btn m-1 bg-blue-400 font-bold text-white">Sort By { sort? sort:""} ⬇️</div>
                     <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm">
-                        <li><a>Pages</a></li>
-                        <li><a>Ratings</a></li>
+                        <li onClick={() => handleSort('pages')}><a>Pages</a></li>
+                        <li onClick={() => handleSort('ratings')}><a>Ratings</a></li>
                     </ul>
                 </div>
             </div>
